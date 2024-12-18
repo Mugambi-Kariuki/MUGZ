@@ -1,0 +1,26 @@
+<html>
+<!DOCTYPE html>
+<head>
+
+
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','other_content.html');
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 ){
+                document.getElementById('ajx').innerHTML = xhr.responseText;
+            }
+        };
+        function getContent(){
+        xhr.send();
+        document.getElementById('load').style.display = 'None';
+        }
+    </script>
+
+<h1> View External Content </h1>
+<span id="ajx"></span>
+<button id="load" onclick="getContent();"> Get Button </button>
+</body>
+</html>
