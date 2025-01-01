@@ -1,15 +1,21 @@
 <?php
-$servername = "localhost: 3308";
+$servername = "localhost:3308";
 $username = "root";
-$password = "abcd";
+$password = "caleb";
+$dbname = "api_ex";
 
 try {
-    //creating db connection
   $conn = new PDO("mysql:host=$servername;dbname=api_ex", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
+  $sql = "INSERT INTO student ( fname, sname, email)
+  VALUES ('Caleb', 'Mugambi', 'caleb.kariuki@strahmore.edu')";
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  echo "New record created successfully";
 } catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
+  echo $sql . "<br>" . $e->getMessage();
 }
+
+$conn=null;
 ?>
